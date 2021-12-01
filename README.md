@@ -1,2 +1,2 @@
-# aoc2022
-Advent of Code 2022 - Rust
+# aoc2021
+Advent of Code 2021 in Rust

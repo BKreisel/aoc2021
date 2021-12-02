@@ -1,16 +1,29 @@
 
-fn main() {
-    let sonar_depths: Vec<usize> = include_str!("../input.txt")
+fn run(input: &'static str) -> usize {
+    let sonar_depths: Vec<usize> = input
         .lines()
         .map(|x| x.parse::<usize>().unwrap())
         .collect();
 
-    let increases = sonar_depths.windows(3)
+    return sonar_depths.windows(3)
         .map(|x| x.iter().sum())
         .collect::<Vec<usize>>()
         .windows(2)
         .filter(|x| x[1] > x[0])
         .count();
-    
-    println!("# Depth Increases: {}", increases);
+}
+
+fn main() {
+    println!("{}", run(include_str!("../input.txt")));
+}
+
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+
+    #[test]
+    fn test() {
+        assert_eq!(run(include_str!("../test.txt")), 5);
+    }
 }
